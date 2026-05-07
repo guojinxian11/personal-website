@@ -403,6 +403,11 @@ a {
   transform: scale(1.1) rotate(-4deg);
 }
 
+/* 手机端专用头像（放在tags和简介之间） */
+.hero-avatar-mobile {
+  display: none;
+}
+
 /* ===== 跑马灯 ===== */
 .marquee {
   background: var(--color-border);
@@ -932,6 +937,21 @@ a {
 
   .hero-visual {
     order: 1;
+  }
+
+  .hero-avatar-mobile {
+    display: flex;
+    justify-content: center;
+    margin: 16px 0;
+  }
+
+  .hero-avatar-mobile .avatar-frame {
+    width: 200px;
+    height: 200px;
+  }
+
+  .hero-visual {
+    display: none;
   }
 
   .hero-text {
