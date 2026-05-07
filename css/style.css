@@ -356,7 +356,6 @@ a {
   margin-bottom: 36px;
   max-width: 480px;
   line-height: 1.8;
-  white-space: nowrap;
 }
 
 .hero-buttons {
@@ -409,7 +408,7 @@ a {
   background: var(--color-border);
   color: #fff;
   padding: 20px 0;
-  transform: rotate(-1.5deg) scale(1.02);
+  transform: rotate(-1.5deg);
   overflow: hidden;
   margin: 40px 0;
   border-top: var(--border-thick);
@@ -912,8 +911,51 @@ a {
 /* masonry布局中禁用transform，避免位置错乱 */
 /* ===== 响应式 ===== */
 @media (max-width: 900px) {
-  .hero,
-  .about-grid,
+  .section {
+    padding: 60px 0;
+  }
+
+  .home-section {
+    padding-top: 120px;
+    padding-bottom: 40px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .hero-content {
+    order: 2;
+  }
+
+  .hero-visual {
+    order: 1;
+  }
+
+  .hero-text {
+    margin: 0 auto 28px;
+    font-size: 1rem;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-content {
+    text-align: center;
+  }
+
+  .about-features {
+    text-align: left;
+  }
+
   .work-card,
   .work-card.reverse {
     grid-template-columns: 1fr;
@@ -931,12 +973,28 @@ a {
     min-height: 240px;
   }
 
+  .accounts-grid {
+    gap: 16px;
+    margin-top: 32px;
+  }
+
   .account-card {
-    flex: 0 1 calc(50% - 12px);
+    flex: 0 1 calc(50% - 8px);
+    min-width: 0;
+  }
+
+  .account-card-visual {
+    height: 120px;
+  }
+
+  .account-card-visual svg {
+    width: 60px;
+    height: 60px;
   }
 
   .photo-gallery {
     grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
 
   .timeline-card {
@@ -952,40 +1010,207 @@ a {
   }
 
   .navbar {
-    width: calc(100% - 48px);
-    left: 24px;
+    width: calc(100% - 32px);
+    left: 16px;
+    top: 16px;
     transform: none;
-    border-radius: 20px;
+    border-radius: 16px;
+    padding: 8px 16px;
   }
 
   .nav-container {
     justify-content: space-between;
     width: 100%;
+    gap: 16px;
+  }
+
+  .logo {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .nav-cta {
+    display: none;
   }
 
   .avatar-frame,
   .about-circle {
-    width: 280px;
-    height: 280px;
+    width: 240px;
+    height: 240px;
+  }
+
+  .experience-section {
+    padding: 60px 0;
+  }
+
+  .works-header {
+    margin-bottom: 32px;
+  }
+
+  .section-title {
+    font-size: clamp(1.6rem, 5vw, 2.5rem);
+  }
+
+  .section-desc {
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 600px) {
-  .account-card {
-    flex: 1 1 100%;
+  .container {
+    padding: 0 16px;
   }
 
-  .photo-gallery {
-    grid-template-columns: 1fr;
+  .section {
+    padding: 48px 0;
+  }
+
+  .home-section {
+    padding-top: 100px;
+  }
+
+  .hero {
+    gap: 28px;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  .hero-greeting {
+    font-size: 0.45em;
+  }
+
+  .name-highlight {
+    font-size: 1.4em;
+    letter-spacing: -1px;
+    margin: 2px 0 10px;
+  }
+
+  .hero-tags {
+    font-size: 0.48em;
+    gap: 6px;
+  }
+
+  .hero-text {
+    font-size: 0.95rem;
+    margin-bottom: 24px;
   }
 
   .hero-buttons {
     flex-direction: column;
+    gap: 12px;
   }
 
   .btn {
     width: 100%;
     justify-content: center;
+    padding: 12px 24px;
+    font-size: 0.95rem;
+  }
+
+  .avatar-frame,
+  .about-circle {
+    width: 200px;
+    height: 200px;
+  }
+
+  .marquee {
+    padding: 14px 0;
+    margin: 24px 0;
+  }
+
+  .marquee-item {
+    font-size: 1rem;
+    gap: 8px;
+  }
+
+  .marquee-item svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .marquee-track {
+    gap: 40px;
+  }
+
+  .about-grid {
+    gap: 32px;
+  }
+
+  .feature-item {
+    gap: 12px;
+  }
+
+  .feature-text h4 {
+    font-size: 1rem;
+  }
+
+  .feature-text p {
+    font-size: 0.88rem;
+  }
+
+  .stat-number {
+    font-size: 1.2em;
+  }
+
+  .accounts-grid {
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .account-card {
+    flex: 1 1 100%;
+    border-radius: 20px;
+  }
+
+  .account-card-visual {
+    height: 100px;
+  }
+
+  .account-card-visual svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .account-card-info {
+    padding: 16px 20px;
+  }
+
+  .photo-gallery {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .photo-item {
+    border-radius: 20px;
+  }
+
+  .photo-meta {
+    padding: 16px;
+  }
+
+  .photo-meta h3 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .photo-tags {
+    margin-bottom: 10px;
+  }
+
+  .photo-meta p {
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+  }
+
+  .works-section .section-desc {
+    font-size: 0.95rem;
+  }
+
+  .footer {
+    padding: 36px 20px;
   }
 }
 
@@ -1230,8 +1455,25 @@ a {
 
 @media (max-width: 900px) {
   .id-card {
-    max-width: 360px;
+    max-width: 100%;
     margin: 0 auto;
+    border-radius: 20px;
+  }
+  .id-card-header {
+    padding: 14px 18px;
+  }
+  .id-card-title {
+    font-size: 1.4rem;
+  }
+  .id-card-badge {
+    width: 50px;
+    height: 50px;
+    top: -18px;
+    right: 14px;
+  }
+  .id-card-badge svg {
+    width: 22px;
+    height: 22px;
   }
   .id-card-body {
     grid-template-columns: 1fr 1.3fr;
@@ -1241,6 +1483,7 @@ a {
   .id-card-footer {
     grid-template-columns: 1fr 1fr;
     gap: 8px;
+    padding: 14px 16px;
   }
   .id-card-stamp {
     display: none;
@@ -1255,6 +1498,15 @@ a {
     linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
   background-size: 24px 24px;
   padding: 100px 0;
+  color: var(--color-text);
+}
+
+.experience-header .section-title {
+  color: var(--color-text);
+}
+
+.experience-header .section-desc {
+  color: var(--color-text-muted);
 }
 
 .game-title {
@@ -1448,33 +1700,374 @@ a {
 }
 
 @media (max-width: 768px) {
+  .game-timeline {
+    margin-top: 40px;
+    padding: 10px 0;
+  }
+
   .game-timeline-line {
-    left: 20px;
+    left: 16px;
   }
+
   .timeline-dot {
-    left: 20px;
+    left: 16px;
+    width: 10px;
+    height: 10px;
   }
+
   .game-card-wrapper {
-    width: calc(100% - 60px);
-    margin-left: 60px !important;
+    width: calc(100% - 52px);
+    margin-left: 52px !important;
     margin-right: 0 !important;
+    margin-bottom: 32px;
   }
+
+  .game-card {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .game-card-icon {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 10px;
+  }
+
+  .game-card-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .game-card-meta {
+    margin-bottom: 8px;
+  }
+
+  .game-date {
+    font-size: 0.8rem;
+  }
+
+  .game-card-title {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+
+  .game-card-desc {
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
   .game-node {
-    left: -42px;
+    left: -36px;
+    width: 18px;
+    height: 18px;
     transform: none;
   }
+
   .game-card-wrapper:hover .game-node {
-    transform: scale(1.35);
+    transform: scale(1.25);
   }
+
   .game-node::after {
     left: auto;
     right: calc(100% + 8px);
     top: 50%;
     bottom: auto;
     transform: translateY(-50%) scale(0.9);
+    font-size: 0.75rem;
+    padding: 3px 8px;
   }
+
   .game-card-wrapper:hover .game-node::after {
-    transform: translateY(-50%) scale(1.15) rotate(-2deg);
-    right: calc(100% + 14px);
+    transform: translateY(-50%) scale(1.1) rotate(-2deg);
+    right: calc(100% + 12px);
+  }
+}
+
+
+/* ===== 小屏幕精细调整（iPhone SE 等） ===== */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 12px;
+  }
+
+  .section {
+    padding: 36px 0;
+  }
+
+  .home-section {
+    padding-top: 90px;
+    padding-bottom: 24px;
+  }
+
+  .hero {
+    gap: 20px;
+  }
+
+  .hero-title {
+    font-size: clamp(1.7rem, 9vw, 2.2rem);
+    margin-bottom: 16px;
+  }
+
+  .name-highlight {
+    font-size: 1.3em;
+    letter-spacing: 0;
+    padding: 2px 8px;
+  }
+
+  .hero-tags {
+    font-size: 0.42em;
+    gap: 4px;
+  }
+
+  .hero-tags span[class^="highlight"] {
+    padding: 2px 8px;
+  }
+
+  .tag-dot {
+    font-size: 1em;
+  }
+
+  .hero-text {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    line-height: 1.7;
+  }
+
+  .avatar-frame,
+  .about-circle {
+    width: 170px;
+    height: 170px;
+    border-radius: 20px;
+  }
+
+  .navbar {
+    width: calc(100% - 24px);
+    left: 12px;
+    top: 12px;
+    padding: 6px 12px;
+    border-radius: 14px;
+  }
+
+  .logo {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+
+  .mobile-toggle svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+  }
+
+  .section-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .about-features {
+    margin-top: 24px;
+    gap: 16px;
+  }
+
+  .feature-item {
+    gap: 10px;
+  }
+
+  .feature-icon {
+    width: 20px;
+    height: 20px;
+    margin-top: 4px;
+  }
+
+  .feature-text h4 {
+    font-size: 0.95rem;
+  }
+
+  .feature-text p {
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+
+  .id-card {
+    border-radius: 16px;
+  }
+
+  .id-card-header {
+    padding: 12px 14px;
+  }
+
+  .id-card-title {
+    font-size: 1.2rem;
+  }
+
+  .id-card-subtitle {
+    font-size: 0.6rem;
+  }
+
+  .id-card-badge {
+    width: 42px;
+    height: 42px;
+    top: -14px;
+    right: 10px;
+    border-width: 2px;
+  }
+
+  .id-card-badge svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .id-card-badge span {
+    font-size: 0.4rem;
+  }
+
+  .id-card-body {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .id-card-photo {
+    border-radius: 12px;
+  }
+
+  .id-card-tags {
+    margin-top: 8px;
+    gap: 6px;
+  }
+
+  .id-tag {
+    padding: 3px 8px;
+    font-size: 0.6rem;
+    border-width: 2px;
+    box-shadow: 2px 2px 0 #000;
+  }
+
+  .id-field {
+    padding: 8px 12px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 0 #000;
+  }
+
+  .id-field-label {
+    font-size: 0.55rem;
+  }
+
+  .id-field-value {
+    font-size: 0.95rem;
+  }
+
+  .id-card-footer {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px 14px;
+  }
+
+  .id-card-barcode {
+    display: none;
+  }
+
+  .game-timeline {
+    margin-top: 28px;
+  }
+
+  .game-card-wrapper {
+    width: calc(100% - 44px);
+    margin-left: 44px !important;
+    margin-bottom: 24px;
+  }
+
+  .game-card {
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .game-card-title {
+    font-size: 1rem;
+  }
+
+  .game-card-desc {
+    font-size: 0.82rem;
+  }
+
+  .game-node {
+    left: -30px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .accounts-grid {
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .account-card {
+    border-radius: 16px;
+  }
+
+  .account-card-visual {
+    height: 80px;
+  }
+
+  .account-card-visual svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .account-card-info {
+    padding: 12px 16px;
+  }
+
+  .account-card-info h3 {
+    font-size: 1rem;
+  }
+
+  .account-card-info p {
+    font-size: 0.85rem;
+  }
+
+  .photo-gallery {
+    gap: 12px;
+  }
+
+  .photo-item {
+    border-radius: 16px;
+  }
+
+  .photo-meta {
+    padding: 14px;
+  }
+
+  .photo-meta h3 {
+    font-size: 0.95rem;
+  }
+
+  .photo-tags .tag {
+    padding: 2px 8px;
+    font-size: 0.65rem;
+    border-width: 2px;
+    box-shadow: 1px 1px 0 #000;
+  }
+
+  .photo-link {
+    font-size: 0.85rem;
+  }
+
+  .footer {
+    padding: 28px 16px;
+  }
+
+  .footer p {
+    font-size: 0.8rem;
+  }
+
+  .toast-message {
+    padding: 10px 20px;
+    font-size: 0.85rem;
   }
 }

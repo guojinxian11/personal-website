@@ -35,26 +35,54 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 revealElements.forEach(el => revealObserver.observe(el));
 
-// 移动端菜单（简单实现）
+// 移动端菜单
 const mobileToggle = document.querySelector('.mobile-toggle');
 const navMenu = document.querySelector('.nav-links');
 
+function openMobileMenu() {
+  navMenu.style.display = 'flex';
+  navMenu.style.position = 'absolute';
+  navMenu.style.top = 'calc(100% + 12px)';
+  navMenu.style.left = '0';
+  navMenu.style.right = '0';
+  navMenu.style.flexDirection = 'column';
+  navMenu.style.background = '#fff';
+  navMenu.style.border = '3px solid #000';
+  navMenu.style.borderRadius = '16px';
+  navMenu.style.padding = '16px';
+  navMenu.style.boxShadow = '6px 6px 0px #000';
+  navMenu.style.gap = '8px';
+  navMenu.style.zIndex = '999';
+  navMenu.style.listStyle = 'none';
+  mobileToggle.setAttribute('aria-expanded', 'true');
+}
+
+function closeMobileMenu() {
+  navMenu.style.display = 'none';
+  mobileToggle.setAttribute('aria-expanded', 'false');
+}
+
 if (mobileToggle) {
-  mobileToggle.addEventListener('click', () => {
-    navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+  mobileToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
     if (navMenu.style.display === 'flex') {
-      navMenu.style.position = 'absolute';
-      navMenu.style.top = '60px';
-      navMenu.style.left = '0';
-      navMenu.style.right = '0';
-      navMenu.style.flexDirection = 'column';
-      navMenu.style.background = '#fff';
-      navMenu.style.border = '3px solid #000';
-      navMenu.style.borderRadius = '16px';
-      navMenu.style.padding = '16px';
-      navMenu.style.boxShadow = '6px 6px 0px #000';
-      navMenu.style.gap = '12px';
-      navMenu.style.zIndex = '999';
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  });
+
+  // 点击菜单项后关闭
+  navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      closeMobileMenu();
+    });
+  });
+
+  // 点击外部关闭
+  document.addEventListener('click', (e) => {
+    if (navMenu.style.display === 'flex' && !mobileToggle.contains(e.target) && !navMenu.contains(e.target)) {
+      closeMobileMenu();
     }
   });
 }
